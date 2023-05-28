@@ -20,21 +20,26 @@ public class DbServiceClientImpl implements DBServiceClient {
         this.clientDataTemplate = clientDataTemplate;
     }
 
-    @Override
-    public Client saveClient(Client client) {
-        return transactionManager.doInTransaction(session -> {
-            var clientCloned = client.clone();
-            if (client.getId() == null) {
-                clientDataTemplate.insert(session, clientCloned);
-                log.info("created client: {}", clientCloned);
-                return clientCloned;
-            }
-            clientDataTemplate.update(session, clientCloned);
-            log.info("updated client: {}", clientCloned);
-            return clientCloned;
-        });
-    }
+@Override
+public Client saveClient(Client client) {
+    return transactionManager.doInTransaction(session -> {
+        var clientCloned = client.clone();
 
+        if (client.getId() == null) {
+            Client createdClient = clientDataTemplate.insert(session, clientCloned);
+            log.info("created client: {}", createdClient);
+            return createdClient;
+        } else {
+            Client existingClient = session.get(Client.class, client.getId());
+            if (existingClient != null) {
+                clientCloned = (Client) session.merge(clientCloned);
+            }
+            Client updatedClient = clientDataTemplate.update(session, clientCloned);
+            log.info("updated client: {}", updatedClient);
+            return updatedClient;
+        }
+    });
+}
     @Override
     public Optional<Client> getClient(long id) {
         return transactionManager.doInReadOnlyTransaction(session -> {

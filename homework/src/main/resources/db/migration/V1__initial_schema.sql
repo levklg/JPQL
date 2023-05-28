@@ -1,17 +1,23 @@
--- Для @GeneratedValue(strategy = GenerationType.IDENTITY)
-/*
-create table client
-(
-    id   bigserial not null primary key,
-    name varchar(50)
-);
- */
+CREATE SEQUENCE hibernate_sequence;
 
--- Для @GeneratedValue(strategy = GenerationType.SEQUENCE)
-create sequence hibernate_sequence start with 1 increment by 1;
-
-create table client
-(
-    id   bigint not null primary key,
-    name varchar(50)
+CREATE TABLE addresses (
+    id BIGSERIAL PRIMARY KEY,
+    street VARCHAR(255)
 );
+
+CREATE TABLE clients (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    address_id BIGINT,
+    FOREIGN KEY (address_id) REFERENCES addresses(id)
+);
+
+CREATE TABLE phones (
+    id BIGSERIAL PRIMARY KEY,
+    number VARCHAR(255),
+    client_id BIGINT,
+    FOREIGN KEY (client_id) REFERENCES clients(id)
+);
+
+
+

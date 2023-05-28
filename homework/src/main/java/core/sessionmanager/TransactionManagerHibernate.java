@@ -12,6 +12,7 @@ public class TransactionManagerHibernate implements TransactionManager {
 
     @Override
     public <T> T doInTransaction(TransactionAction<T> action) {
+
         return doInTransaction(action, false);
     }
 

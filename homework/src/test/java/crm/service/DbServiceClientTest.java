@@ -1,9 +1,13 @@
 package crm.service;
 
 import base.AbstractHibernateTest;
+import crm.model.Address;
 import crm.model.Client;
+import crm.model.Phone;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,20 +18,21 @@ class DbServiceClientTest extends AbstractHibernateTest {
     @DisplayName(" корректно сохранять, изменять и загружать клиента")
     void shouldCorrectSaveClient() {
         //given
-        var client = new Client("Ivan");
+        //    var client = new Client("Ivan");
 
         // Это надо раскомментировать, у выполненного ДЗ, все тесты должны проходить
         // Кроме удаления комментирования, тестовый класс менять нельзя
-/*
+
         var client = new Client(null, "Vasya", new Address(null, "AnyStreet"), List.of(new Phone(null, "13-555-22"),
                 new Phone(null, "14-666-333")));
-*/
+
 
         //when
         var savedClient = dbServiceClient.saveClient(client);
         System.out.println(savedClient);
 
         //then
+
         var loadedSavedClient = dbServiceClient.getClient(savedClient.getId());
         assertThat(loadedSavedClient).isPresent();
         assertThat(loadedSavedClient.get()).usingRecursiveComparison().isEqualTo(savedClient);

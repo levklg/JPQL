@@ -1,5 +1,8 @@
 package homework;
 
+import crm.model.Address;
+import crm.model.Client;
+import crm.model.Phone;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -28,7 +31,7 @@ class HomeworkTest {
 
     // Это надо раскомментировать, у выполненного ДЗ, все тесты должны проходить
     // Кроме удаления комментирования, тестовый класс менять нельзя
-/*
+
     @BeforeEach
     public void setUp() {
         makeTestDependencies();
@@ -42,7 +45,7 @@ class HomeworkTest {
         var tables = StreamSupport.stream(metadata.getDatabase().getNamespaces().spliterator(), false)
                 .flatMap(namespace -> namespace.getTables().stream())
                 .collect(Collectors.toList());
-        assertThat(tables).hasSize(3);
+               assertThat(tables).hasSize(3);
     }
     @Test
     public void testHomeworkRequirementsForUpdatesCount() {
@@ -55,6 +58,8 @@ class HomeworkTest {
         });
         var client = new Client(null, "Vasya", new Address(null, "AnyStreet"),
             List.of(new Phone(null, "13-555-22"), new Phone(null, "14-666-333")));
+
+
         try (var session = sessionFactory.openSession()) {
             session.getTransaction().begin();
             session.persist(client);
@@ -142,5 +147,5 @@ class HomeworkTest {
             e.printStackTrace();
         }
     }
-*/
+
 }

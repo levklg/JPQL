@@ -1,5 +1,6 @@
 package core.repository;
 
+import crm.model.Client;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface DataTemplate<T> {
 
     List<T> findAll(Session session);
 
-    void insert(Session session, T object);
+    T insert(Session session, T object);
 
-    void update(Session session, T object);
+    T update(Session session, T object);
 }
