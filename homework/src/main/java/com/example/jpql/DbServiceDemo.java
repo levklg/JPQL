@@ -1,16 +1,16 @@
-package demo;
+package com.example.jpql;
 
-import crm.model.Address;
-import crm.model.Phone;
+import com.example.jpql.core.crm.model.Address;
+import com.example.jpql.core.crm.model.Phone;
 import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import core.repository.DataTemplateHibernate;
-import core.repository.HibernateUtils;
-import core.sessionmanager.TransactionManagerHibernate;
-import crm.dbmigrations.MigrationsExecutorFlyway;
-import crm.model.Client;
-import crm.service.DbServiceClientImpl;
+import com.example.jpql.core.repository.DataTemplateHibernate;
+import com.example.jpql.core.repository.HibernateUtils;
+import com.example.jpql.core.sessionmanager.TransactionManagerHibernate;
+import com.example.jpql.core.crm.dbmigrations.MigrationsExecutorFlyway;
+import com.example.jpql.core.crm.model.Client;
+import com.example.jpql.core.crm.service.DbServiceClientImpl;
 
 import java.util.List;
 
@@ -36,10 +36,7 @@ public class DbServiceDemo {
 
         var clientTemplate = new DataTemplateHibernate<>(Client.class);
 
-
-
         var dbServiceClient = new DbServiceClientImpl(transactionManager, clientTemplate);
-        dbServiceClient.saveClient(new Client("dbServiceFirst"));
 
         var clientSecond = dbServiceClient.saveClient(new Client("dbServiceSecond"));
         var clientSecondSelected = dbServiceClient.getClient(clientSecond.getId())
@@ -53,7 +50,6 @@ public class DbServiceDemo {
 
         log.info("All clients");
         dbServiceClient.findAll().forEach(client -> log.info("client:{}", client));
-
 
     }
 

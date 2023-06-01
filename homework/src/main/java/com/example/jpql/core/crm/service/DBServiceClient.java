@@ -1,6 +1,6 @@
-package crm.service;
+package com.example.jpql.core.crm.service;
 
-import crm.model.Client;
+import com.example.jpql.core.crm.model.Client;
 
 import java.util.List;
 import java.util.Optional;

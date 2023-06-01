@@ -1,11 +1,10 @@
 package core.repository;
 
 import base.AbstractHibernateTest;
-import crm.model.Address;
-import crm.model.Client;
-import crm.model.Phone;
+import com.example.jpql.core.crm.model.Address;
+import com.example.jpql.core.crm.model.Client;
+import com.example.jpql.core.crm.model.Phone;
 import junit.framework.AssertionFailedError;
-import org.hibernate.Hibernate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

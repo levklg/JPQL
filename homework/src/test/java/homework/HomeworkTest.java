@@ -1,8 +1,9 @@
 package homework;
 
-import crm.model.Address;
-import crm.model.Client;
-import crm.model.Phone;
+
+import com.example.jpql.core.crm.model.Address;
+import com.example.jpql.core.crm.model.Client;
+import com.example.jpql.core.crm.model.Phone;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;

@@ -1,4 +1,5 @@
-package crm.model;
+package com.example.jpql.core.crm.model;
+
 
 import javax.persistence.*;
 

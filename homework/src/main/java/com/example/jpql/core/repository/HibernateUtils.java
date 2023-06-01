@@ -1,4 +1,4 @@
-package core.repository;
+package com.example.jpql.core.repository;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

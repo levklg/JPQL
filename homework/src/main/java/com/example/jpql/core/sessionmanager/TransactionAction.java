@@ -1,4 +1,4 @@
-package core.sessionmanager;
+package com.example.jpql.core.sessionmanager;
 
 import org.hibernate.Session;
 import java.util.function.Function;

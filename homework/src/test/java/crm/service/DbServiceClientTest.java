@@ -1,9 +1,9 @@
 package crm.service;
 
 import base.AbstractHibernateTest;
-import crm.model.Address;
-import crm.model.Client;
-import crm.model.Phone;
+import com.example.jpql.core.crm.model.Address;
+import com.example.jpql.core.crm.model.Client;
+import com.example.jpql.core.crm.model.Phone;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

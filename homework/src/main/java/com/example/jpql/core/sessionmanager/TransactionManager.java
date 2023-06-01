@@ -1,4 +1,4 @@
-package core.sessionmanager;
+package com.example.jpql.core.sessionmanager;
 
 public interface TransactionManager {
 

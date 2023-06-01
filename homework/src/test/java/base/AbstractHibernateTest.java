@@ -1,14 +1,14 @@
 package base;
 
-import core.repository.DataTemplateHibernate;
-import core.repository.HibernateUtils;
-import core.sessionmanager.TransactionManagerHibernate;
-import crm.dbmigrations.MigrationsExecutorFlyway;
-import crm.model.Address;
-import crm.model.Client;
-import crm.model.Phone;
-import crm.service.DBServiceClient;
-import crm.service.DbServiceClientImpl;
+import com.example.jpql.core.repository.DataTemplateHibernate;
+import com.example.jpql.core.repository.HibernateUtils;
+import com.example.jpql.core.sessionmanager.TransactionManagerHibernate;
+import com.example.jpql.core.crm.dbmigrations.MigrationsExecutorFlyway;
+import com.example.jpql.core.crm.model.Address;
+import com.example.jpql.core.crm.model.Client;
+import com.example.jpql.core.crm.model.Phone;
+import com.example.jpql.core.crm.service.DBServiceClient;
+import com.example.jpql.core.crm.service.DbServiceClientImpl;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.stat.EntityStatistics;
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 
-import static demo.DbServiceDemo.HIBERNATE_CFG_FILE;
+import static com.example.jpql.DbServiceDemo.HIBERNATE_CFG_FILE;
 
 
 public abstract class AbstractHibernateTest {

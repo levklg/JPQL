@@ -1,10 +1,10 @@
-package crm.service;
+package com.example.jpql.core.crm.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import core.repository.DataTemplate;
-import crm.model.Client;
-import core.sessionmanager.TransactionManager;
+import com.example.jpql.core.repository.DataTemplate;
+import com.example.jpql.core.crm.model.Client;
+import com.example.jpql.core.sessionmanager.TransactionManager;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,11 +42,13 @@ public Client saveClient(Client client) {
 }
     @Override
     public Optional<Client> getClient(long id) {
+
         return transactionManager.doInReadOnlyTransaction(session -> {
             var clientOptional = clientDataTemplate.findById(session, id);
             log.info("client: {}", clientOptional);
             return clientOptional;
         });
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package crm.dbmigrations;
+package com.example.jpql.core.crm.dbmigrations;
 
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;

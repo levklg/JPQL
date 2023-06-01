@@ -1,6 +1,5 @@
-package core.repository;
+package com.example.jpql.core.repository;
 
-import crm.model.Client;
 import org.hibernate.Session;
 
 import java.util.List;

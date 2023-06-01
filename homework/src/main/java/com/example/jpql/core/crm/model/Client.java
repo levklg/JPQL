@@ -1,17 +1,9 @@
-package crm.model;
+package com.example.jpql.core.crm.model;
 
-import org.hibernate.Hibernate;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 
 @Entity
 @Table(name = "clients")
@@ -29,7 +21,7 @@ public class Client implements Cloneable {
     private Address address;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Phone> phones;
+    private List<Phone> phones = new ArrayList<>();
 
     public Client() {
     }
@@ -57,10 +49,14 @@ public class Client implements Cloneable {
 
 
     public Client(Long id, String name, Address address, List<Phone> phones) {
+
         this.id = id;
         this.name = name;
         this.address = address;
         this.phones = phones;
+        for (Phone phone : this.phones) {
+            phone.setClient(this);
+        }
     }
 
     public Long getId() {
@@ -119,6 +115,16 @@ public class Client implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+
+
+
+
+
+    public void addPhone(Phone phone) {
+        phones.add(phone);
+        phone.setClient(this);
     }
 
 }

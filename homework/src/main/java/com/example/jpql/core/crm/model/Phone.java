@@ -1,11 +1,4 @@
-package crm.model;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
-
-import javax.persistence.*;
+package com.example.jpql.core.crm.model;
 
 
 import javax.persistence.*;
@@ -43,9 +36,10 @@ public class Phone {
     }
 
     public Phone(Long id, String number, Client client) {
+
         this.id = id;
         this.number = number;
-        this.client = client;
+        setClient(client);
     }
 
     public Long getId() {
@@ -79,6 +73,7 @@ public class Phone {
         clonedPhone.setClient(this.client);
         return clonedPhone;
     }
+
 }
 
 
